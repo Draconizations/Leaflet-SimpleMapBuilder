@@ -21,7 +21,7 @@ L.SimpleMapBuilder = L.Evented.extend({
         if (!config.maps || config.maps.length === 0) this.createMapInfo(config);
         else (config.maps.forEach(map => this.createMapInfo(map)));
         
-        if (config.markers && config.markers.length > 0) this.createGlobalMarkers(config.markers);
+        if (config.maps && config.maps.length > 0 && config.markers && config.markers.length > 0) this.createGlobalMarkers(config.markers);
 
         this.createMap();
     },

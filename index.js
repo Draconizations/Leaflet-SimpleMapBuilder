@@ -40,6 +40,8 @@ L.SimpleMapBuilder = L.Evented.extend({
         let minZoom = map.minZoom ? map.minZoom : 0;
         let maxZoom = map.maxZoom ? map.maxZoom : 2;
 
+        let boundMargin = map.boundMargin ? map.boundMargin : 0;
+
         // get the map bounds and the center
         let bounds = [[0, 0], [-tileSize, tileSize]];
         let center = [-tileSize / 2, tileSize / 2];
@@ -53,6 +55,7 @@ L.SimpleMapBuilder = L.Evented.extend({
         let tilesY = maxY - minY + 1; // ditto, but vertically
 
         bounds = [[tileSize * -minY, tileSize * minX], [tileSize * -(maxY + 1), tileSize * (maxX + 1)]];
+        mapBounds = [[bounds[0][0] + boundMargin, bounds[0][1] - boundMargin], [bounds[1][0] - boundMargin, bounds[1][1] + boundMargin]]
         center = [tileSize * -tilesY / 2, tileSize * tilesX / 2];
 
         // create the tile layer for this map
@@ -80,6 +83,7 @@ L.SimpleMapBuilder = L.Evented.extend({
             },
             properties: {
                 bounds: bounds,
+                mapBounds: mapBounds,
                 center: center,
                 minZoom: minZoom,
                 maxZoom: maxZoom
@@ -147,7 +151,7 @@ L.SimpleMapBuilder = L.Evented.extend({
             layers: baseMaps[this.mapInfo.maps.find(map => map.active === true).name]
         }).setView(this.mapInfo.maps[0].properties.center, this.mapInfo.maps[0].properties.minZoom);
 
-        this.map.setMaxBounds(this.mapInfo.maps[0].properties.bounds);
+        this.map.setMaxBounds(this.mapInfo.maps[0].properties.mapBounds);
 
         // add the appropriate markers
         this.updateOverlays(this.mapInfo.maps[0].layers.overlays);
@@ -193,7 +197,7 @@ L.SimpleMapBuilder = L.Evented.extend({
         curr.active = true;
 
         // update map bounds
-        this.map.setMaxBounds(curr.properties.bounds);
+        this.map.setMaxBounds(curr.properties.mapBounds);
 
         // add all the markers on the current map
         this.updateOverlays(curr.layers.overlays);

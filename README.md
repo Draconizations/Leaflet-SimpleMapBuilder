@@ -82,6 +82,7 @@ The config for a single map.
 | minY         | number       | `0`                           | the Y coordinate of the first tile (top left), at zoom level 0*         |
 | maxX         | number       | `0`                           | the X coordinate of the last tile (bottom right), at zoom level 0*      |
 | maxY         | number       | `0`                           | the Y coordinate of the last tile (bottom right), at zoom level 0*      |
+| boundMargin  | number       | `0`                           | the empty space around the map before view is restricted                |
 | markers      | markerConfig[] | `null`                        | optional, the markers for this map                                      |
 
 

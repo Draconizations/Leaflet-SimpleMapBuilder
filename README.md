@@ -59,7 +59,7 @@ let exampleConfig = {
 
 new L.SimpleMapBuilder("map", exampleConfig);
 ```
-Note that the `tilePath` property follows leaflets' [TileLayer URL template](https://leafletjs.com/reference.html#tilelayer), and that the `"map"` parameter is the id of your map container.
+Note that the `tilePath` property follows leaflet's [TileLayer URL template](https://leafletjs.com/reference.html#tilelayer), and that the `"map"` parameter is the id of your map container.
 
 That's all you need, except for the actual images.
 
@@ -73,8 +73,8 @@ The config for a single map.
 | Option       | Type         | Default                     | Description                                                             |
 |--------------|--------------|-----------------------------|-------------------------------------------------------------------------|
 | name         | string       | `null`                        | REQUIRED. The name of the map                                           |
-| tilePath     | string       | `"directory/{z}-{y}-{x}.png"` | the path to the tile assets, you probably want to overwrite this        |
-| errorTileUrl | string ([Tile Layer URL](https://leafletjs.com/reference.html#tilelayer))       | `""`                          | the URL to the tile used if another tile fails to load                  |
+| tilePath     | string ([Tile Layer URL](https://leafletjs.com/reference.html#tilelayer))      | `"directory/{z}-{y}-{x}.png"` | the path to the tile assets, you probably want to overwrite this        |
+| errorTileUrl | string       | `""`                          | the URL to the tile used if another tile fails to load                  |
 | tileSize     | number       | `256`                         | the size of the tiles in pixels                                         |
 | minZoom      | number       | `0`                           | the minimum zoom level, the furthest your map zooms out (inclusive)     |
 | maxZoom      | number       | `2`                           | the maximum zoom level, the amount of times you can zoom in (inclusive) |
